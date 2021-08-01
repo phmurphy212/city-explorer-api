@@ -1,0 +1,25 @@
+{
+  "name": "city-explorer-api",
+  "version": "1.0.0",
+  "description": "City Explorer weather data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phmurphy212/city-explorer-api.git"
+  },
+  "author": "Phil Murphy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phmurphy212/city-explorer-api/issues"
+  },
+  "homepage": "https://github.com/phmurphy212/city-explorer-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
