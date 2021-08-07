@@ -8,55 +8,17 @@ app.use(cors());
 
 require('dotenv').config();
 
-const axios = require('axios');
-
 const PORT = process.env.PORT;
 
-
-class Forecast {
-  constructor(day) {
-    this.description = `Forecast for ${day.valid_date}: Low: ${day.low_temp}, High: ${day.high_temp} with ${day.weather.description}`;
-    this.date = day.valid_date;
-  }
-}
-
-class Movie {
-  constructor(movie) {
-    this.src = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
-    this.alt = movie.title;
-  }
-}
+const weather = require('./modules/weather.js');
+const movies = require('./modules/movies.js');
 
 app.get('/', (req, res) => {
   res.send(`Hello World!`);
 });
 
-app.get('/weather', async (request, response) => {
-  let lat = request.query.lat;
-  let lon = request.query.lon;
+app.get('/weather', weather);
 
-  let wxData = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`);
-  try {
-    response.send(wxData.data.data.map(day =>
-      new Forecast(day)));
-  } catch (error){
-    response.status(404).send('Whoops, seems like there\'s a problem');
-  }
-}
-);
-
-app.get('/movies', async (request, response) => {
-  console.log('I am here');
-  let query = request.query.search;
-  console.log(query);
-  try {
-    let movieData = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${query}`);
-    console.log(movieData.data.results);
-    response.send(movieData.data.results.map(movie => new Movie(movie)));
-  } catch (error){
-    response.status(404).send('Whoops, seems like there\'s a problem');
-  }
-}
-);
+app.get('/movies', movies);
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
