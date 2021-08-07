@@ -21,7 +21,7 @@ class Forecast {
 }
 
 class Movie {
-  constructor(movie){
+  constructor(movie) {
     this.src = `https://image.tmdb.org/t/p/w500${movie.data.results.poster_path}`;
     this.alt = movie.data.results.title;
   }
@@ -47,12 +47,14 @@ app.get('/weather', async (request, response) => {
 
 app.get('/movies', async (request, response) => {
   console.log('I am here');
-  let query = request.query.query;
+  let query = request.query.search;
+  let movieArray = [];
 
   let movieData = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${query}`);
   try {
-      response.send(movieData.data.results.map(movie =>
-      new Movie(movie)));
+    response.send(movieData.data.results.map((movie) => {
+      movieArray.push(new Movie(movie));
+    }));
   } catch {
     response.status(404).send('Whoops, seems like there\'s a problem');
   }
