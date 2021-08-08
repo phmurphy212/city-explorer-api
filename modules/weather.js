@@ -16,10 +16,14 @@ async function showWeather(request, response) {
   let lon = request.query.lon;
 
   let wxData = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`);
-  try {
-    response.send(wxData.data.data.map(day =>
-      new Forecast(day)));
-  } catch (error){
-    response.status(404).send('Whoops, seems like there\'s a problem');
+  let i = 0;
+  while (i < 7) {
+    try {
+      response.send(wxData.data.data.map(day =>
+        new Forecast(day)));
+    } catch (error) {
+      response.status(404).send('Whoops, seems like there\'s a problem');
+    }
+    i++;
   }
 }
