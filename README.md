@@ -4,8 +4,8 @@
 
 **Deployed App**:
 
-* Frontend:
-* Backend:
+* Frontend: [https://pane-city-explorer.netlify.app](https://pane-city-explorer.netlify.app)
+* Backend: [https://pane-city-explorer.herokuapp.com/](https://pane-city-explorer.herokuapp.com/)
 
 ## Overview
 
@@ -25,8 +25,6 @@ Alright, this is an app that allows you to Search a specific city, and then get 
 * [Complex UML](complex.png)
 
 * [Cache UML](cache.png)
-
-## Change Log
 
 ## Credit and Collaborations
 
