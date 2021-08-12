@@ -1,25 +1,40 @@
 # city-explorer-api
 
 **Author**: Phil Murphy
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+**Deployed App**:
+
+* Frontend:
+* Backend:
 
 ## Overview
-This app should take a city name, and provide weather data from our local server
 
-## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Alright, this is an app that allows you to Search a specific city, and then get weather data, and movies related to that city, along with a map rendered to the app.
 
 ## Architecture
-[UML Image](UML.png)
+
+### Sample .env values
+
+* WEATHER_API_KEY
+* MOVIE_API_KEY
+
+### UML
+
+* [UML Image](UML.png)
+
+* [Complex UML](complex.png)
+
+* [Cache UML](cache.png)
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Credit and Collaborations
+
+* Jamison 'Brutal' McGrath
+* Charlie Fadness
 * Mark Thanadabouth
-*
+* Willem Jacobs (the real MVP)
+* Ryan Galloway
 
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
