@@ -11,14 +11,30 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 const weather = require('./modules/weather.js');
+
 const movies = require('./modules/movies.js');
 
-app.get('/', (req, res) => {
-  res.send(`Hello World!`);
-});
+app.get('/weather', weatherHandler);
 
-app.get('/weather', weather);
+app.get('/movies', movieHandler);
 
-app.get('/movies', movies);
+function weatherHandler(request, response) {
+  const { lat, lon } = request.query;
+  weather(lat, lon)
+    .then(summaries => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(200).send('Sorry. Something went wrong!');
+    });
+}
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+function movieHandler(request, response) {
+  const {search} = request.query;
+  movies(search)
+    .then(summaries => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(200).send('Sorry. Something went wrong!');
+    });
+}
+app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
