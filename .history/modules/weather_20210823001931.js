@@ -36,6 +36,6 @@ class Weather {
     this.description = day.weather.description;
     this.time = day.datetime;
     this.high = day.high_temp;
-    this.low = day.low_temp;
+    this.low = this.low_temp;
   }
 }
